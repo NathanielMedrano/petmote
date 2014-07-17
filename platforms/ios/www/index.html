@@ -29,17 +29,23 @@
         
         <div id="colorScreen">
             <div>
-                Use sliders to set laser.
+                Use arrows to set laser.
             </div>
-            <div class="rangeDiv">
-                <input type="range" min="0" max="255" value="0" name="red" id="red" class="topcoat-range"/>
+            <div>
+          <div class="row">
+            <div class="col col-33 col-offset-33">
+              <button on-hold="onHold()" id="up" class="button icon-up ion-chevron-up button-clear button-dark"></button>
             </div>
-            <div class="rangeDiv">
-                <input type="range" min="0" max="255" value="0" name="green" id="green" class="topcoat-range"/>
+          </div>
+          <div class="row">
+            <div class="col col-33">
+              <button on-hold="onHold()" class="button icon-left ion-chevron-left button-clear button-dark"></button>
             </div>
-            <div class="rangeDiv">
-                <input type="range" min="0" max="255" value="0" name="blue" id="blue" class="topcoat-range"/>
+            <div class="col col-33 col-offset-33">
+              <button on-hold="onHold()" class="button icon-right ion-chevron-right button-clear button-dark"></button>
             </div>
+          </div>
+        </div>
 
             <div id="rgbText">
                 &nbsp;

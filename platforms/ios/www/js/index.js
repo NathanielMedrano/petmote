@@ -1,5 +1,5 @@
 /* jshint quotmark: false, unused: vars, browser: true */
-/* global cordova, console, $, bluetoothSerial, _, refreshButton, deviceList, previewColor, red, green, blue, disconnectButton, connectionScreen, colorScreen, rgbText, messageDiv */
+/* global cordova, console, $, bluetoothSerial, _, refreshButton, deviceList, previewDirection, red, green, blue, disconnectButton, connectionScreen, colorScreen, rgbText, messageDiv */
 'use strict';
 
 var app = {
@@ -18,8 +18,8 @@ var app = {
         disconnectButton.ontouchstart = app.disconnect;
 
         // throttle changes
-        var throttledOnColorChange = _.throttle(app.onColorChange, 200);
-        $('input').on('change', throttledOnColorChange);
+        var throttledOnDirectionChange = _.throttle(app.onDirectionChange, 200);
+        $('input').on('change', throttledOnDirectionChange);
         
         app.list();
     },
@@ -53,17 +53,17 @@ var app = {
         colorScreen.hidden = true;
         app.setStatus("Disconnected.");
     },
-    onColorChange: function (evt) {
-        var c = app.getColor();
+    onDirectionChange: function (evt) {
+        var c = app.getDirection();
         rgbText.innerText = c;
-        previewColor.style.backgroundColor = "rgb(" + c + ")";
+        previewDirection.style.backgroundDirection = "rgb(" + c + ")";
         app.sendToArduino(c);
     },
-    getColor: function () {
+    getDirection: function () {
         var color = [];
-        color.push(red.value);
-        color.push(green.value);
-        color.push(blue.value);
+        color.push(up.value);
+        color.push(left.value);
+        color.push(right.value);
         return color.join(',');
     },
     sendToArduino: function(c) {
